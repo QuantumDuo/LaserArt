@@ -16,7 +16,7 @@ namespace DataAccess
         private const string CONNECTION_STRING = "Server=GUREN;Database=LaserArt;Trusted_Connection=True;Trust Server Certificate=true";
         public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
         {
-            Database.EnsureDeleted();
+            //Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 
@@ -30,10 +30,23 @@ namespace DataAccess
             builder.Entity<User>()
                    .HasData(new User { Id = "0", Name = "Deleted user" });
 
-            //builder.Entity<Dish>()
-            //       .Property(e => e.Tags)
-            //       .HasConversion(v => string.Join('|', v),
-            //                      v => v.Split('|', StringSplitOptions.RemoveEmptyEntries).ToList());
+            builder.Entity<Employee>()
+                   .OwnsOne(e => e.Machine);
+
+            builder.Entity<Order>()
+                   .HasOne(o => o.Employee)
+                   .WithMany(e => e.Orders)
+                   .OnDelete(DeleteBehavior.NoAction);
+
+            builder.Entity<Order>()
+                   .HasOne(o => o.Customer)
+                   .WithMany(e => e.Orders)
+                   .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<Order>()
+                   .HasOne(o => o.Material)
+                   .WithMany(m => m.Orders)
+                   .OnDelete(DeleteBehavior.Restrict);
 
             base.OnModelCreating(builder);
         }
