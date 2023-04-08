@@ -1,0 +1,12 @@
+D:\Source\LaserArt\DataAccess\bin\Debug\net7.0\DataAccess.deps.json
+D:\Source\LaserArt\DataAccess\bin\Debug\net7.0\DataAccess.dll
+D:\Source\LaserArt\DataAccess\bin\Debug\net7.0\DataAccess.pdb
+D:\Source\LaserArt\DataAccess\obj\Debug\net7.0\DataAccess.csproj.AssemblyReference.cache
+D:\Source\LaserArt\DataAccess\obj\Debug\net7.0\DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+D:\Source\LaserArt\DataAccess\obj\Debug\net7.0\DataAccess.AssemblyInfoInputs.cache
+D:\Source\LaserArt\DataAccess\obj\Debug\net7.0\DataAccess.AssemblyInfo.cs
+D:\Source\LaserArt\DataAccess\obj\Debug\net7.0\DataAccess.csproj.CoreCompileInputs.cache
+D:\Source\LaserArt\DataAccess\obj\Debug\net7.0\DataAccess.dll
+D:\Source\LaserArt\DataAccess\obj\Debug\net7.0\refint\DataAccess.dll
+D:\Source\LaserArt\DataAccess\obj\Debug\net7.0\DataAccess.pdb
+D:\Source\LaserArt\DataAccess\obj\Debug\net7.0\ref\DataAccess.dll

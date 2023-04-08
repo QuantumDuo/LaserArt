@@ -1,0 +1,12 @@
+D:\Source\LaserArt\Utils\bin\Debug\net7.0\Utils.deps.json
+D:\Source\LaserArt\Utils\bin\Debug\net7.0\Utils.dll
+D:\Source\LaserArt\Utils\bin\Debug\net7.0\Utils.pdb
+D:\Source\LaserArt\Utils\obj\Debug\net7.0\Utils.csproj.AssemblyReference.cache
+D:\Source\LaserArt\Utils\obj\Debug\net7.0\Utils.GeneratedMSBuildEditorConfig.editorconfig
+D:\Source\LaserArt\Utils\obj\Debug\net7.0\Utils.AssemblyInfoInputs.cache
+D:\Source\LaserArt\Utils\obj\Debug\net7.0\Utils.AssemblyInfo.cs
+D:\Source\LaserArt\Utils\obj\Debug\net7.0\Utils.csproj.CoreCompileInputs.cache
+D:\Source\LaserArt\Utils\obj\Debug\net7.0\Utils.dll
+D:\Source\LaserArt\Utils\obj\Debug\net7.0\refint\Utils.dll
+D:\Source\LaserArt\Utils\obj\Debug\net7.0\Utils.pdb
+D:\Source\LaserArt\Utils\obj\Debug\net7.0\ref\Utils.dll

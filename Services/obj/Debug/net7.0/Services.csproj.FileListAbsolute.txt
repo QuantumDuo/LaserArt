@@ -1,0 +1,17 @@
+D:\Source\LaserArt\Services\obj\Debug\net7.0\Services.csproj.AssemblyReference.cache
+D:\Source\LaserArt\Services\obj\Debug\net7.0\Services.GeneratedMSBuildEditorConfig.editorconfig
+D:\Source\LaserArt\Services\obj\Debug\net7.0\Services.AssemblyInfoInputs.cache
+D:\Source\LaserArt\Services\obj\Debug\net7.0\Services.AssemblyInfo.cs
+D:\Source\LaserArt\Services\obj\Debug\net7.0\Services.csproj.CoreCompileInputs.cache
+D:\Source\LaserArt\Services\bin\Debug\net7.0\Services.deps.json
+D:\Source\LaserArt\Services\bin\Debug\net7.0\Services.dll
+D:\Source\LaserArt\Services\bin\Debug\net7.0\Services.pdb
+D:\Source\LaserArt\Services\bin\Debug\net7.0\DataAccess.dll
+D:\Source\LaserArt\Services\bin\Debug\net7.0\Utils.dll
+D:\Source\LaserArt\Services\bin\Debug\net7.0\DataAccess.pdb
+D:\Source\LaserArt\Services\bin\Debug\net7.0\Utils.pdb
+D:\Source\LaserArt\Services\obj\Debug\net7.0\Services.csproj.CopyComplete
+D:\Source\LaserArt\Services\obj\Debug\net7.0\Services.dll
+D:\Source\LaserArt\Services\obj\Debug\net7.0\refint\Services.dll
+D:\Source\LaserArt\Services\obj\Debug\net7.0\Services.pdb
+D:\Source\LaserArt\Services\obj\Debug\net7.0\ref\Services.dll
