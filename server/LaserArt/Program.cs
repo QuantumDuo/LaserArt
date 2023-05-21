@@ -12,7 +12,7 @@ var configuration = builder.Configuration;
 var logging = builder.Logging;
 
 var connectionString = configuration.GetConnectionString("DefaultConnection");
-services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connectionString));
+services.AddDbContext<ApplicationContext>(options => options.UseSqlite(connectionString));
 
 Action<IdentityOptions> setupAction = options =>
 {
