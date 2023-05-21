@@ -21,9 +21,5 @@ namespace Services.Interfaces
         Task<UserModel?> GetUser(ClaimsPrincipal principal);
         Task<string?> GetRole(ClaimsPrincipal principal);
         Task<Result> DeleteAsync(ClaimsPrincipal principal, string id);
-        Task<Result> ChangeNameAsync(string name, ClaimsPrincipal principal, string id);
-        string? GetUserId(ClaimsPrincipal principal);
-        Task<PagedArrayModel<EmployeeModel>> GetEmployeesAsync(int cateringId, int page, string query);
-        Task<PagedArrayModel<UserModel>> GetCustomersAsync(int page, string query);
     }
 }
