@@ -166,7 +166,7 @@ namespace Services
             return roles.FirstOrDefault();
         }
         public string? GetUserId(ClaimsPrincipal principal) => userManager.GetUserId(principal);
-        public async Task<PagedArrayModel<EmployeeModel>> GetEmployeesAsync(int cateringId, int page, string query) =>
+        public async Task<PagedArrayModel<EmployeeModel>> GetEmployeesAsync(int page, string query) =>
             await GetUsers<EmployeeModel, Employee>(page, query);
 
         public async Task<PagedArrayModel<UserModel>> GetCustomersAsync(int page, string query) =>
