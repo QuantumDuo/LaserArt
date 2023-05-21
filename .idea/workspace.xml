@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c236ea72-098d-4a64-8292-73ffb1ce62e1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/server/.vs/LaserArt/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/server/.vs/LaserArt/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
-    </list>
+    <list default="true" id="c236ea72-098d-4a64-8292-73ffb1ce62e1" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,7 +39,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Vitaliy/Documents/GitHub/LaserArt",
+    "last_opened_file_path": "C:/Users/Vitaliy/Documents/GitHub/LaserArt/web",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -93,7 +91,7 @@
       <updated>1684669226205</updated>
       <workItem from="1684669230038" duration="658000" />
       <workItem from="1684672715666" duration="18795000" />
-      <workItem from="1684695309495" duration="551000" />
+      <workItem from="1684695309495" duration="676000" />
     </task>
     <servers />
   </component>

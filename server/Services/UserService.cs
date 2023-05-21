@@ -85,7 +85,7 @@ namespace Services
             return HandleResult(result);
         }
 
-        public async Task<Result> ChangeNameAsync(string name, ClaimsPrincipal principal, string id)
+        public async Task<Result> ChangeNameAsync(string name, string id)
         {
             var user = await context.Employees.FindAsync(id);
             if (user is null)

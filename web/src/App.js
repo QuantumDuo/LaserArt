@@ -12,7 +12,8 @@ import {Preloader} from "./components/common/Preloader";
 import {useUpdate} from "./utils/hook/hooks";
 import {selector} from "./store/auth";
 import {createTheme, ThemeProvider} from '@mui/material/styles';
-import {MaterialsPage} from "./components/pages/service/MaterialsPage";
+import {MaterialsPage} from "./components/pages/MaterialsPage";
+import {EmployeesPage} from "./components/pages/EmployeesPage";
 
 const theme = createTheme({
     components: {
@@ -49,6 +50,7 @@ export const App = () => {
                         <Route path='/login' element={<LoginPage/>}/>
                         <Route path='/register' element={<RegisterPage/>}/>
                         <Route path='/materials' element={<MaterialsPage/>}/>
+                        <Route path='/employees' element={<EmployeesPage/>}/>
                         <Route path='*' element={<Temp404/>}/>
                     </Routes>
                 </Box>

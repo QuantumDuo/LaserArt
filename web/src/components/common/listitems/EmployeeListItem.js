@@ -4,7 +4,7 @@ import {Box, Card, Stack, Typography} from "@mui/material";
 import {EditDialogButton} from "../dialogs/EditDialogButton";
 import {DeleteButton} from "../buttons/DeleteButton";
 import {ChangeNameDialog} from "../dialogs/ChangeNameDialog";
-import {deleteEmployee, rename} from "../../../store/service/employee";
+import {deleteEmployee, rename} from "../../../store/employee";
 
 import {RenameIconButton} from "../buttons/IconButtons";
 

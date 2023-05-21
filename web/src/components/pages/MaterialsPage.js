@@ -1,15 +1,15 @@
-import {withRole} from "../../../utils/hoc/withAuth";
-import {roles} from "../../../utils/constants";
-import {addMaterials, getMaterials, selector, setUpdated} from "../../../store/materials";
-import {MaterialEditDialog} from "../../common/dialogs/MaterialEditDialog";
+import {withRole} from "../../utils/hoc/withAuth";
+import {roles} from "../../utils/constants";
+import {addMaterials, getMaterials, selector, setUpdated} from "../../store/materials";
+import {MaterialEditDialog} from "../common/dialogs/MaterialEditDialog";
 import {useDispatch, useSelector} from "react-redux";
 import React, {memo, useCallback, useEffect, useState} from "react";
-import {SearchComponent} from "../../common/inputs/SearchComponent";
-import {ListContainer} from "../../common/ListContainer";
-import {AddFab} from "../../common/buttons/AddFab";
-import {EditDialogButton} from "../../common/dialogs/EditDialogButton";
-import {useUpdate} from "../../../utils/hook/hooks";
-import {MaterialsListItem} from "../../common/listitems/MaterialsListItem";
+import {SearchComponent} from "../common/inputs/SearchComponent";
+import {ListContainer} from "../common/ListContainer";
+import {AddFab} from "../common/buttons/AddFab";
+import {EditDialogButton} from "../common/dialogs/EditDialogButton";
+import {useUpdate} from "../../utils/hook/hooks";
+import {MaterialsListItem} from "../common/listitems/MaterialsListItem";
 
 export const MaterialsPage = memo(
     withRole(roles.Admin)(

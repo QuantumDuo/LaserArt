@@ -2,7 +2,7 @@ import {useTranslation} from "react-i18next";
 import {useFormik} from "formik";
 import React from "react";
 import {CustomTextField} from "../inputs/CustomTextField";
-import {resetErrors, selector} from "../../../store/service/caterings";
+import {resetErrors, selector} from "../../../store/employee";
 import {EditDialog} from "./EditDialog";
 import {useErrors, useReset} from "../../../utils/hook/hooks";
 import {

@@ -1,25 +1,25 @@
-import {withRole} from "../../../utils/hoc/withAuth";
+import {withRole} from "../../utils/hoc/withAuth";
 import {useDispatch, useSelector} from "react-redux";
 import React, {memo, useCallback, useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
-import {getEmployees, register, selector, setUpdated} from "../../../store/service/employee";
-import {SearchComponent} from "../../common/inputs/SearchComponent";
-import {ListContainer} from "../../common/ListContainer";
-import {AddFab} from "../../common/buttons/AddFab";
-import {EditDialogButton} from "../../common/dialogs/EditDialogButton";
-import {useUpdate} from "../../../utils/hook/hooks";
-import {EmployeeListItem} from "../../common/listItems/EmployeeListItem";
-import {EmployeeRegisterDialog} from "../../common/dialogs/EmployeeRegisterDialog";
-import {roles} from "../../../utils/constants";
+import {getEmployees, register, selector, setUpdated} from "../../store/employee";
+import {SearchComponent} from "../common/inputs/SearchComponent";
+import {ListContainer} from "../common/ListContainer";
+import {AddFab} from "../common/buttons/AddFab";
+import {EditDialogButton} from "../common/dialogs/EditDialogButton";
+import {useUpdate} from "../../utils/hook/hooks";
+import {EmployeeListItem} from "../common/listitems/EmployeeListItem";
+import {EmployeeRegisterDialog} from "../common/dialogs/EmployeeRegisterDialog";
+import {roles} from "../../utils/constants";
 
 export const EmployeesPage = memo(
-    withRole(roles.Service)(
+    withRole(roles.Admin)(
         () => {
             const {cateringId} = useParams()
             const {items, totalCount} = useSelector(selector("employees"))
             const updated = useUpdate(selector)
             const dispatch = useDispatch()
-            const [filter, setFilter] = useState({cateringId})
+            const [filter, setFilter] = useState({})
             const [loading, setLoading] = useState(false)
             const itemCallback = useCallback(
                 employee => <EmployeeListItem key={employee.id} employee={employee}/>,

@@ -4,7 +4,7 @@ import {commonGet, commonInitialState, commonReducers, getSelector, handleRespon
 import {del, patch, post} from "../api/api";
 
 const {actions, name, reducer} = createSlice({
-    name: 'service.employees',
+    name: 'employee',
     initialState: {
         ...commonInitialState,
         employees: new PagedArray()
@@ -16,7 +16,7 @@ const {actions, name, reducer} = createSlice({
         },
     },
 });
-export default {name, reducer}
+export default reducer
 export const selector = getSelector(name)
 export const {employeesSuccess, resetErrors, setErrors, setUpdated} = actions
 export const getEmployees = (filter = null) => commonGet('Account/GetEmployees', filter, employeesSuccess)
