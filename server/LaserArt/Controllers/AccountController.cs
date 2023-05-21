@@ -53,18 +53,14 @@ namespace API.Controllers
         [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public async Task<IActionResult> LogoutAsync()
-        {
-            await userService.LogoutAsync();
-            return Ok();
-        }
+        public async Task LogoutAsync() => await userService.LogoutAsync();
 
         [HttpGet]
-        [Authorize(Roles = Roles.Customer)]
+        [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public async Task<ActionResult<UserModel?>> GetCustomerAsync() => await userService.GetUser(User);
+        public async Task<ActionResult<UserModel?>> InfoAsync() => await userService.GetUser(User);
 
 
         [HttpGet]
@@ -94,6 +90,19 @@ namespace API.Controllers
             return HandleResult(result);
         }
 
+        [HttpDelete("{id}")]
+        [Authorize(Roles = Roles.Admin)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> DeleteAsync(string id)
+        {
+            var result = await userService.DeleteAsync(User, id);
+            return HandleResult(result);
+        }
+
         [HttpPut]
         [Authorize(Roles = Roles.Customer)]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -103,6 +112,19 @@ namespace API.Controllers
         public async Task<IActionResult> ChangeName([FromForm] ChangeNameRequest model)
         {
             var result = await userService.ChangeNameAsync(model.Name, User);
+            return HandleResult(result);
+        }
+
+        [HttpPatch("{id}")]
+        [Authorize(Roles = Roles.Admin)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> ChangeName([FromBody] ChangeNameRequest model, string id)
+        {
+            var result = await userService.ChangeNameAsync(model.Name, User, id);
             return HandleResult(result);
         }
 
@@ -134,18 +156,6 @@ namespace API.Controllers
         public async Task<IActionResult> ChangePasswordAsync([FromForm] ChangePasswordRequest model)
         {
             var result = await userService.ChangePasswordAsync(model.OldPassword, model.NewPassword, User);
-            return HandleResult(result);
-        }
-
-        [HttpPatch]
-        [Authorize(Roles = Roles.Customer)]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        public async Task<IActionResult> AddPasswordAsync([FromForm] AddPasswordRequest model)
-        {
-            var result = await userService.AddPasswordAsync(model.NewPassword, User);
             return HandleResult(result);
         }
     }
