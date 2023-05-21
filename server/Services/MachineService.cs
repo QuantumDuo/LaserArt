@@ -15,10 +15,10 @@ namespace Services
         {
         }
 
-        public async Task<PagedArrayModel<MachineModel>> GetAsync(ClaimsPrincipal principal, int page)
+        public async Task<PagedArrayModel<MachineModel>> GetAsync(ClaimsPrincipal principal, int page, string query)
         {
             var user = await userManager.GetUserAsync(principal);
-            return await GetAsync(page, x => x.EmployeeId == user!.Id, x => x.Name);
+            return await GetAsync(page, x => x.EmployeeId == user!.Id && x.Name.Contains(query), x => x.Name);
         }
     }
 }

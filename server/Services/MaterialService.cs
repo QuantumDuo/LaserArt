@@ -13,6 +13,6 @@ namespace Services
         {
         }
 
-        public async Task<PagedArrayModel<MaterialModel>> GetAsync(int page) => await GetAsync(page, x => true, x => x.Name);
+        public async Task<PagedArrayModel<MaterialModel>> GetAsync(int page, string query) => await GetAsync(page, x => x.Name.Contains(query), x => x.Name);
     }
 }

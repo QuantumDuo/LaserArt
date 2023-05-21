@@ -17,10 +17,10 @@ namespace API.Controllers
         [HttpGet]
         [AllowAnonymous]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<PagedArrayModel<MaterialModel>>> GetAsync(int page)
+        public async Task<ActionResult<PagedArrayModel<MaterialModel>>> GetAsync(int page = 1, string query = "")
         {
             var materialService = service as IMaterialService;
-            return await materialService!.GetAsync(page);
+            return await materialService!.GetAsync(page, query);
         }
     }
 }

@@ -1,11 +1,15 @@
-﻿using DataAccess.Entities.Users;
+﻿using DataAccess;
+using DataAccess.Entities.Users;
 using FluentResults;
 using Mapster;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Services.Interfaces;
 using Services.Models;
 using Services.Models.Register;
+using System.Linq.Expressions;
+using System.Linq;
 using System.Security.Claims;
 using System.Text.Encodings.Web;
 using Utils.Constants;
@@ -18,16 +22,19 @@ namespace Services
         private readonly UserManager<User> userManager;
         private readonly SignInManager<User> signInManager;
         private readonly IEmailSender emailSender;
+        private readonly ApplicationContext context;
 
         public UserService(UserManager<User> userManager,
                            SignInManager<User> signInManager,
                            IEmailSender emailSender,
                            RoleManager<IdentityRole> roleManager,
-                           IConfiguration configuration) : base()
+                           IConfiguration configuration,
+                           ApplicationContext context) : base()
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.emailSender = emailSender;
+            this.context = context;
             InitializeAsync(userManager, roleManager, configuration).Wait();
         }
 
@@ -61,11 +68,29 @@ namespace Services
             var result = await userManager.DeleteAsync(user!);
             return HandleResult(result);
         }
+        public async Task<Result> DeleteAsync(ClaimsPrincipal principal, string id)
+        {
+            var user = await context.Employees.FindAsync(id);
+            if (user is null)
+                return Result.Fail(Errors.NotFound);
+            var result = await userManager.DeleteAsync(user!);
+            return HandleResult(result);
+        }
 
         public async Task<Result> ChangeNameAsync(string name, ClaimsPrincipal principal)
         {
             var user = await userManager.GetUserAsync(principal);
             user!.Name = name;
+            var result = await userManager.UpdateAsync(user);
+            return HandleResult(result);
+        }
+
+        public async Task<Result> ChangeNameAsync(string name, ClaimsPrincipal principal, string id)
+        {
+            var user = await context.Employees.FindAsync(id);
+            if (user is null)
+                return Result.Fail(Errors.NotFound);
+            user.Name = name;
             var result = await userManager.UpdateAsync(user);
             return HandleResult(result);
         }
@@ -95,7 +120,8 @@ namespace Services
 
         public async Task LogoutAsync() => await signInManager.SignOutAsync();
 
-        public async Task<Result<TModel>> RegisterAsync<TModel>(RegisterModel model, string callbackUrl) where TModel : UserModel
+        public async Task<Result<TModel>> RegisterAsync<TModel>(RegisterModel model, string callbackUrl)
+            where TModel : UserModel
         {
 
             var user = model.Create();
@@ -123,10 +149,15 @@ namespace Services
             return HandleResult(result);
         }
 
-        public async Task<T?> GetUser<T>(ClaimsPrincipal principal) where T : UserModel
+        public async Task<UserModel?> GetUser(ClaimsPrincipal principal)
         {
             var user = await userManager.GetUserAsync(principal);
-            return user?.Adapt<T>();
+            var role = await userManager.GetRolesAsync(user!);
+            return role.FirstOrDefault() switch
+            {
+                Roles.Employee => user!.Adapt<EmployeeModel>(),
+                _ => user!.Adapt<UserModel>(),
+            };
         }
         public async Task<string?> GetRole(ClaimsPrincipal principal)
         {
@@ -134,13 +165,23 @@ namespace Services
             IList<string> roles = await userManager.GetRolesAsync(user!);
             return roles.FirstOrDefault();
         }
+        public string? GetUserId(ClaimsPrincipal principal) => userManager.GetUserId(principal);
+        public async Task<PagedArrayModel<EmployeeModel>> GetEmployeesAsync(int cateringId, int page, string query) =>
+            await GetUsers<EmployeeModel, Employee>(page, query);
 
-        public async Task<bool> CheckPassword(ClaimsPrincipal principal)
+        public async Task<PagedArrayModel<UserModel>> GetCustomersAsync(int page, string query) =>
+            await GetUsers<UserModel, Customer>(page, query);
+        private async Task<PagedArrayModel<TModel>> GetUsers<TModel, TEntity>(int page, string query)
+            where TEntity : User
         {
-            var user = await userManager.GetUserAsync(principal);
-            return user?.PasswordHash is not null;
+            var users = context.Set<TEntity>().Where(x => x.Name.Contains(query));
+            var entities = await users.OrderByDescending(x => x.Name)
+                                      .Skip((page - 1) * ItemsPerPage)
+                                      .Take(ItemsPerPage)
+                                      .ToListAsync();
+            var models = entities.Adapt<List<TModel>>();
+            return new PagedArrayModel<TModel>(models, users.Count());
         }
-
         private static async Task InitializeAsync(UserManager<User> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration)
         {
             string AdminEmail = configuration["Admin:Email"]!;
@@ -164,17 +205,6 @@ namespace Services
                     await userManager.AddToRoleAsync(admin, Roles.Admin);
                 }
             }
-        }
-
-        public async Task<UserModel?> GetUser(ClaimsPrincipal principal)
-        {
-            var user = await userManager.GetUserAsync(principal);
-            var role = await userManager.GetRolesAsync(user!);
-            return role.FirstOrDefault() switch
-            {
-                Roles.Employee => user!.Adapt<EmployeeModel>(),
-                _ => user!.Adapt<UserModel>(),
-            };
         }
     }
 }

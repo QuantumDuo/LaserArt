@@ -5,6 +5,6 @@ namespace Services.Interfaces
 {
     public interface IMachineService : ICrudService<MachineModel>
     {
-        Task<PagedArrayModel<MachineModel>> GetAsync(ClaimsPrincipal principal, int page);
+        Task<PagedArrayModel<MachineModel>> GetAsync(ClaimsPrincipal principal, int page, string query);
     }
 }

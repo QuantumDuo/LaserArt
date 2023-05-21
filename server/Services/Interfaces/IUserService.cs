@@ -20,5 +20,6 @@ namespace Services.Interfaces
         Task<Result> ChangeNameAsync(string name, ClaimsPrincipal principal);
         Task<UserModel?> GetUser(ClaimsPrincipal principal);
         Task<string?> GetRole(ClaimsPrincipal principal);
+        Task<Result> DeleteAsync(ClaimsPrincipal principal, string id);
     }
 }

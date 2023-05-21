@@ -16,10 +16,10 @@ namespace API.Controllers
 
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<PagedArrayModel<MachineModel>>> GetAsync(int page = 1)
+        public async Task<ActionResult<PagedArrayModel<MachineModel>>> GetAsync(int page = 1, string query = "")
         {
             var machineService = service as IMachineService;
-            return await machineService!.GetAsync(User, page);
+            return await machineService!.GetAsync(User, page, query);
         }
     }
 }
