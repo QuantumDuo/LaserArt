@@ -60,11 +60,11 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = Roles.Customer)]
+        [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public async Task<ActionResult<UserModel?>> GetCustomerAsync() => await userService.GetUser(User);
+        public async Task<ActionResult<UserModel?>> InfoAsync() => await userService.GetUser(User);
 
 
         [HttpGet]
