@@ -2,7 +2,7 @@
 using Mapster;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Services.Interfaces.CRUD;
+using Services.Interfaces;
 using Services.Models;
 using System.ComponentModel.DataAnnotations;
 
@@ -35,7 +35,7 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async virtual Task<IActionResult> EditAsync([FromForm, Required] int id, [FromForm] TRequest request)
+        public async virtual Task<IActionResult> EditAsync(int id, [FromForm] TRequest request)
         {
             var model = request.Adapt<TModel>();
             var result = await service.EditAsync(model);
@@ -46,7 +46,7 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async virtual Task<IActionResult> DeleteAsync([FromForm, Required] int id)
+        public async virtual Task<IActionResult> DeleteAsync(int id)
         {
             var result = await service.DeleteAsync(id);
             return HandleResult(result);

@@ -8,18 +8,17 @@ namespace DataAccess.Entities
         public DateTime Time { get; set; }
         public int Height { get; set; }
         public int Width { get; set; }
-        public string SvgPath { get; set; } = null!;
-        public string GPath { get; set; } = null!;
+        public string Path { get; set; } = null!;
         public decimal Price { get; set; }
 
         public string CustomerId { get; set; } = null!;
-        public Customer Customer { get; set; } = null!;
+        public virtual Customer Customer { get; set; } = null!;
 
         public int MaterialId { get; set; }
-        public Material Material { get; set; } = null!;
+        public virtual Material Material { get; set; } = null!;
 
         public string? EmployeeId { get; set; }
-        public Employee? Employee { get; set; }
+        public virtual Employee? Employee { get; set; }
 
     }
 }

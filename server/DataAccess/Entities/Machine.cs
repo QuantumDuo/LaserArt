@@ -13,6 +13,6 @@ namespace DataAccess.Entities
 
 
         public string EmployeeId { get; set; } = null!;
-        public Employee Employee { get; set; } = null!;
+        public virtual Employee Employee { get; set; } = null!;
     }
 }

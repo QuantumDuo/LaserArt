@@ -14,7 +14,7 @@ namespace API.Requests
         public int Height { get; set; }
         [Required]
         public int Width { get; set; }
-
-        public string CustomerId { get; set; } = null!;
+        [Required]
+        public IFormFile File { get; set; } = null!;
     }
 }

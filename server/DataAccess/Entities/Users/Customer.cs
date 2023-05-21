@@ -2,6 +2,6 @@
 {
     public class Customer : User
     {
-        public List<Order> Orders { get; set; } = null!;
+        public virtual List<Order> Orders { get; set; } = null!;
     }
 }

@@ -12,12 +12,11 @@ namespace API.Controllers
         protected ActionResult HandleResult(Result result) => result.IsSuccess ? Ok() : Error(result);
         private ActionResult Error(ResultBase result)
         {
-            var errors = result.Errors.SelectMany(e => e.Reasons);
             return result.Errors[0].Message switch
             {
-                Errors.NotFound => NotFound(errors),
-                Errors.Forbidden => Forbid(errors),
-                _ => BadRequest(errors)
+                Errors.NotFound => NotFound(result.Errors),
+                Errors.Forbidden => Forbid(result.Errors),
+                _ => BadRequest(result.Errors)
             };
         }
         protected ActionResult<T> Created<T>(T value) => CreatedAtAction(null, value);

@@ -165,5 +165,16 @@ namespace Services
                 }
             }
         }
+
+        public async Task<UserModel?> GetUser(ClaimsPrincipal principal)
+        {
+            var user = await userManager.GetUserAsync(principal);
+            var role = await userManager.GetRolesAsync(user!);
+            return role.FirstOrDefault() switch
+            {
+                Roles.Employee => user!.Adapt<EmployeeModel>(),
+                _ => user!.Adapt<UserModel>(),
+            };
+        }
     }
 }

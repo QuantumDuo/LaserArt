@@ -8,6 +8,8 @@
         public int Height { get; set; }
         public int Width { get; set; }
 
+        public string Path { get; set; } = null!;
+
         public int MaterialId { get; set; }
         public MaterialModel Material { get; set; } = null!;
 

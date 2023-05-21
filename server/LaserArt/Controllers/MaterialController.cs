@@ -1,7 +1,7 @@
 ﻿using API.Requests;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Services.Interfaces.CRUD;
+using Services.Interfaces;
 using Services.Models;
 using Utils.Constants;
 
@@ -17,10 +17,10 @@ namespace API.Controllers
         [HttpGet]
         [AllowAnonymous]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<List<MaterialModel>>> GetAsync()
+        public async Task<ActionResult<PagedArrayModel<MaterialModel>>> GetAsync(int page)
         {
             var materialService = service as IMaterialService;
-            return await materialService!.GetAsync();
+            return await materialService!.GetAsync(page);
         }
     }
 }

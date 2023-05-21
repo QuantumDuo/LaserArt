@@ -2,7 +2,6 @@
 using DataAccess.Entities.Users;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection.Emit;
 
 namespace DataAccess
 {
@@ -13,14 +12,9 @@ namespace DataAccess
         public DbSet<Order> Orders { get; set; } = null!;
         public DbSet<Machine> Machines { get; set; } = null!;
 
-        private const string CONNECTION_STRING = "Server=GUREN;Database=LaserArt;Trusted_Connection=True;Trust Server Certificate=true";
-        public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
-        {
-            //Database.EnsureDeleted();
-            Database.EnsureCreated();
-        }
+        public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options) => Database.EnsureCreated();
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseSqlServer(CONNECTION_STRING);
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseLazyLoadingProxies();
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

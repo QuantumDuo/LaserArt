@@ -2,18 +2,17 @@ using DataAccess;
 using DataAccess.Entities.Users;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Services;
-using Services.CRUD;
 using Services.Interfaces;
-using Services.Interfaces.CRUD;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 var configuration = builder.Configuration;
 var logging = builder.Logging;
 
-// Add services to the container.
-services.AddDbContext<ApplicationContext>();
+var connectionString = configuration.GetConnectionString("DefaultConnection");
+services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connectionString));
 
 Action<IdentityOptions> setupAction = options =>
 {

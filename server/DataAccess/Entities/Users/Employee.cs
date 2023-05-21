@@ -2,8 +2,8 @@
 {
     public class Employee : User
     {
-        public List<Order> Orders { get; set; } = null!;
+        public virtual List<Order> Orders { get; set; } = null!;
         public int? MachineId { get; set; }
-        public Machine? Machine { get; set; }
+        public virtual Machine? Machine { get; set; }
     }
 }

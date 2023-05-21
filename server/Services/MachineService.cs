@@ -7,17 +7,18 @@ using Services.Models;
 using System.Linq.Expressions;
 using System.Security.Claims;
 
-namespace Services.CRUD
+namespace Services
 {
     public class MachineService : CrudService<MachineModel, Machine>, IMachineService
     {
-        private readonly UserManager<User> userManager;
-        public MachineService(ApplicationContext context, UserManager<User> userManager) : base(context) => this.userManager = userManager;
+        public MachineService(ApplicationContext context, UserManager<User> userManager) : base(context, userManager)
+        {
+        }
 
-        public async Task<List<MachineModel>> GetAsync(ClaimsPrincipal principal)
+        public async Task<PagedArrayModel<MachineModel>> GetAsync(ClaimsPrincipal principal, int page)
         {
             var user = await userManager.GetUserAsync(principal);
-            return await GetAsync(x => x.EmployeeId == user!.Id);
+            return await GetAsync(page, x => x.EmployeeId == user!.Id, x => x.Name);
         }
     }
 }

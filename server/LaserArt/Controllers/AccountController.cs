@@ -28,7 +28,7 @@ namespace API.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<UserModel>> RegisterAsync([FromForm] RegisterRequest request, string callbackUrl)
+        public async Task<ActionResult<UserModel>> RegisterAsync([FromForm] CustomerRegisterRequest request, string callbackUrl)
         {
             return await RegisterAsync<UserModel>(request, callbackUrl);
         }
@@ -64,7 +64,7 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public async Task<ActionResult<UserModel?>> GetCustomerAsync() => await userService.GetUser<UserModel>(User);
+        public async Task<ActionResult<UserModel?>> GetCustomerAsync() => await userService.GetUser(User);
 
 
         [HttpGet]
@@ -148,11 +148,5 @@ namespace API.Controllers
             var result = await userService.AddPasswordAsync(model.NewPassword, User);
             return HandleResult(result);
         }
-
-        [HttpGet]
-        [Authorize]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public async Task<ActionResult<bool>> HasPasswordAsync() => await userService.CheckPassword(User);
     }
 }
