@@ -38,7 +38,6 @@ namespace API.Controllers
         public async virtual Task<IActionResult> EditAsync(int id, [FromForm] TRequest request)
         {
             var model = request.Adapt<TModel>();
-            model.Id = id;
             var result = await service.EditAsync(model);
             return HandleResult(result);
         }
