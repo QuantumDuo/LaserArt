@@ -27,6 +27,10 @@ namespace API.Controllers
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<PagedArrayModel<OrderModel>>> GetAsync(int page = 1) => await orderService.GetAsync(User, page);
+
+        [HttpGet("[action]")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<PagedArrayModel<OrderModel>>> UnacceptedAsync(int page = 1) => await orderService.GetUnacceptedAsync(page);
         [HttpPost]
         [Authorize(Roles = Roles.Customer)]
         [ProducesResponseType(StatusCodes.Status201Created)]

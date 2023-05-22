@@ -10,5 +10,6 @@ namespace Services.Interfaces
         decimal GetPrice(OrderModel model);
         Task<Result> AcceptAsync(int id);
         Task<Result> DoAsync(int id);
+        Task<PagedArrayModel<OrderModel>> GetUnacceptedAsync(int page);
     }
 }
