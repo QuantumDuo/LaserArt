@@ -5,8 +5,6 @@ namespace API.Requests
     public class OrderRequest : IRequestBody
     {
         [Required]
-        public string Status { get; set; } = null!;
-        [Required]
         public DateTime Time { get; set; } = DateTime.Now;
         [Required]
         public int MaterialId { get; set; }

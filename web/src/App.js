@@ -15,6 +15,8 @@ import {createTheme, ThemeProvider} from '@mui/material/styles';
 import {MaterialsPage} from "./components/pages/MaterialsPage";
 import {EmployeesPage} from "./components/pages/EmployeesPage";
 import {MachinesPage} from "./components/pages/MachinesPage";
+import {OrdersPage} from "./components/pages/OrdersPage";
+import {NewOrderPage} from "./components/pages/NewOrderPage";
 
 const theme = createTheme({
     components: {
@@ -53,6 +55,8 @@ export const App = () => {
                         <Route path='/materials' element={<MaterialsPage/>}/>
                         <Route path='/employees' element={<EmployeesPage/>}/>
                         <Route path='/machines' element={<MachinesPage/>}/>
+                        <Route path='/orders' element={<OrdersPage/>}/>
+                        <Route path='/new_order' element={<NewOrderPage/>}/>
                         <Route path='*' element={<Temp404/>}/>
                     </Routes>
                 </Box>

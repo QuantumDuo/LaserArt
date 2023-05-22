@@ -1,31 +1,48 @@
-import {Box, Card, Stack, Typography} from "@mui/material";
+import {Box, Button, Card, Stack, Typography} from "@mui/material";
 import React, {memo, useCallback} from "react";
-import {EditDialogButton} from "../dialogs/EditDialogButton";
-import {DeleteButton} from "../buttons/DeleteButton";
-import {deleteMaterials, editMaterials} from "../../../store/materials";
-import {MaterialEditDialog} from "../dialogs/MaterialEditDialog";
-
-
-
+import {useDispatch} from "react-redux";
+import {applyOrder} from "../../../store/order";
 
 
 export const OrderListItem = memo(
-    ({order}) => {
+    ({order,readonly}) => {
+
+        const dispatch = useDispatch()
+        const onApply = useCallback(
+            () => {
+                dispatch(applyOrder(order.id))
+            },
+            [dispatch,order]
+        )
 
         return <Card sx={{padding: 1}}>
             <Stack direction="row" alignItems="center">
                 <Box sx={{flexGrow: 1}}>
                     <Typography>
-                        {order.name}
+                        {`$${(order.price)}`}
                     </Typography>
                     <Typography>
-                        {`$${(material.price)}`}
+                        {order.status}
+                    </Typography>
+                    <Typography>
+                        {order.time}
+                    </Typography>
+                    <Typography>
+                        {order.height}
+                    </Typography>
+                    <Typography>
+                        {order.width}
+                    </Typography>
+                    <Typography>
+                        {order.path}
+                    </Typography>
+                    <Typography>
+                        {order.material.name}
                     </Typography>
                 </Box>
-                <EditDialogButton EditDialog={MaterialEditDialog}
-                                  editAction={editMaterials}
-                                  material={material}/>
-                <DeleteButton deleteAction={deleteMaterials} id={material.id}/>
+                {
+                    readonly && <Button onClick={onApply}>Apply</Button>
+                }
             </Stack>
         </Card>
     }

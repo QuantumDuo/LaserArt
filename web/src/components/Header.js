@@ -1,5 +1,4 @@
 import React, {memo, useCallback, useState} from 'react'
-import {useTranslation} from 'react-i18next';
 import {AppBar, IconButton, MenuItem, Popover, Stack, Toolbar, Typography} from "@mui/material";
 import Button from "@mui/material/Button";
 import {useNavigate} from "react-router-dom";
@@ -65,15 +64,19 @@ const LoginButton = memo(
 
 export const Header = memo(
     () => {
-        const {t} = useTranslation()
         const navigate = useNavigate()
         const role = useSelector(selector("role"))
         const onLogoClick = useCallback(
             () => navigate("/"),
             [navigate]
         )
+
         const onMakeOrderClick = useCallback(
-            () => navigate("/my_orders/new"),
+            () => navigate("/new_order"),
+            [navigate]
+        )
+        const onOrdersClick = useCallback(
+            () => navigate("/orders"),
             [navigate]
         )
         return (
@@ -89,14 +92,14 @@ export const Header = memo(
                            component="nav">
                         {
                             role !== roles.Admin &&
-                            <Button variant="contained" color="success" onClick={onMakeOrderClick}>
-                                {t("Make order")}
+                            <Button variant="contained" color="success" onClick={onOrdersClick}>
+                                {"Orders"}
                             </Button>
                         }
                         {
                             role === roles.Customer &&
                             <Button variant="contained" color="success" onClick={onMakeOrderClick}>
-                                {t("Make order")}
+                                {"Make order"}
                             </Button>
                         }
                     </Stack>
