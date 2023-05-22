@@ -63,21 +63,24 @@ namespace Services
             return Result.Ok(response);
         }
 
-        public async Task<Result> AcceptAsync(int id)
+        public async Task<Result> AcceptAsync(ClaimsPrincipal principal, int id)
         {
             var order = await context.Orders.FindAsync(id);
             if (order is null)
                 return Result.Fail(Errors.NotFound);
+            order.EmployeeId = userManager.GetUserId(principal);
             order.Status = "Accepted";
             context.Update(order);
             await context.SaveChangesAsync();
             return Result.Ok();
         }
-        public async Task<Result> DoAsync(int id)
+        public async Task<Result> DoAsync(ClaimsPrincipal principal, int id)
         {
             var order = await context.Orders.FindAsync(id);
             if (order is null)
                 return Result.Fail(Errors.NotFound);
+            if (order.EmployeeId != userManager.GetUserId(principal))
+                return Result.Fail(Errors.Forbidden);
             order.Status = "Done";
             context.Update(order);
             await context.SaveChangesAsync();

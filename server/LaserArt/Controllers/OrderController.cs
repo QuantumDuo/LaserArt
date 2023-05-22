@@ -74,7 +74,7 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<decimal>> AcceptAsync(int id)
         {
-            var result = await orderService.AcceptAsync(id);
+            var result = await orderService.AcceptAsync(User, id);
             return HandleResult(result);
         }
 
@@ -83,7 +83,7 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<decimal>> DoAsync(int id)
         {
-            var result = await orderService.DoAsync(id);
+            var result = await orderService.DoAsync(User, id);
             return HandleResult(result);
         }
 
