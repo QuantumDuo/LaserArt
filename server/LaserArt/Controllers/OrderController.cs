@@ -1,13 +1,13 @@
 ﻿using API.Requests;
+using DataAccess.Entities.Users;
 using Mapster;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Services.Interfaces;
 using Services.Models;
 using Utils.Constants;
-using System.ComponentModel.DataAnnotations;
-using Services.Interfaces;
-using Microsoft.AspNetCore.Identity;
-using DataAccess.Entities.Users;
 
 namespace API.Controllers
 {
@@ -36,7 +36,9 @@ namespace API.Controllers
         public async virtual Task<ActionResult<OrderModel>> AddAsync([FromForm] OrderRequest request)
         {
             var model = request.Adapt<OrderModel>();
-            model.Path = $"Images/{Guid.NewGuid()}.svg";
+            if (Path.GetExtension(request.File.FileName).ToLower() != ".svg")
+                return BadRequest(new string[] { "Invalid file. Should be SVG" });
+                model.Path = $"Images/{Guid.NewGuid()}.svg";
             using (var stream = System.IO.File.Create(model.Path))
                 await request.File.CopyToAsync(stream);
             model.CustomerId = userManager.GetUserId(User)!;
@@ -72,5 +74,20 @@ namespace API.Controllers
             var result = await orderService.AcceptAsync(id);
             return HandleResult(result);
         }
+
+        [Authorize]
+        [HttpGet("[action]")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> DocAsync(int id)
+        {
+            var file = await orderService.GetByIdAsync(id);
+            if (file is null)
+                return NotFound();
+            byte[] fileBytes = System.IO.File.ReadAllBytes(file.Path);
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, $"{file.Id}.svg");
+        }
+
     }
 }
