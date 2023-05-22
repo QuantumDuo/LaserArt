@@ -25,7 +25,9 @@ namespace DataAccess
                    .HasData(new User { Id = "0", Name = "Deleted user" });
 
             builder.Entity<Employee>()
-                   .OwnsOne(e => e.Machine);
+                   .HasOne(e => e.Machine)
+                   .WithOne(m => m.Employee)
+                   .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<Order>()
                    .HasOne(o => o.Employee)
