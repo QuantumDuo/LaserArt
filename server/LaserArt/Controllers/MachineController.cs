@@ -7,7 +7,7 @@ using Utils.Constants;
 
 namespace API.Controllers
 {
-    [Authorize(Roles = Roles.Employee)]
+    [Authorize(Roles = Roles.Admin)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status403Forbidden)]
     public class MachineController : CrudController<MachineModel, MachineRequest>
