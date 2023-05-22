@@ -15,11 +15,11 @@ export const MaterialsListItem = memo(
         return <Card sx={{padding: 1}}>
             <Stack direction="row" alignItems="center">
                 <Box sx={{flexGrow: 1}}>
-                    <Typography>
-                        {material.name}
+                    <Typography variant='h6'>
+                        Material: {material.name}
                     </Typography>
-                    <Typography>
-                        {`${(material.price)}`}<span> $/cm<sup>2</sup></span>
+                    <Typography variant='h6'>
+                        Price: {`${(material.price)}`} <span>$/cm<sup>2</sup></span>
                     </Typography>
                 </Box>
                 <EditDialogButton EditDialog={MaterialEditDialog}

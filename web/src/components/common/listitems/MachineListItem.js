@@ -10,26 +10,20 @@ export const MachineListItem = memo(
     ({machine}) => {
 console.log(machine)
         return (
-            <Card sx={{padding: 1}}>
+
                 <Stack direction="row" alignItems="center">
                     <Box sx={{flexGrow: 1}}>
-                        <Typography>
-                            {machine.name}
+                        <Typography variant='h6'>
+                            Laser name: {machine.name}
                         </Typography>
-                        <Typography>
-                            {machine.laserType}
+                        <Typography variant='h6'>
+                            Laser type: {machine.laserType}
                         </Typography>
-                        <Typography>
-                            {machine.power}
+                        <Typography variant='h6'>
+                            Power: {machine.power} | Speed: {machine.speed}
                         </Typography>
-                        <Typography>
-                            {machine.height}
-                        </Typography>
-                        <Typography>
-                            {machine.width}
-                        </Typography>
-                        <Typography>
-                            {machine.speed}
+                        <Typography variant='h6'>
+                            Height: {machine.height} | Width: {machine.width}
                         </Typography>
                     </Box>
                     <EditDialogButton EditDialog={MachineEditDialog}
@@ -37,7 +31,7 @@ console.log(machine)
                                       machine={machine}/>
                     <DeleteButton deleteAction={deleteMachines} id={machine.id}/>
                 </Stack>
-            </Card>
+
         )
     }
 )

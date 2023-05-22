@@ -10,7 +10,7 @@ import {RegisterPage} from "./components/pages/RegisterPage";
 import {ConfirmPage} from "./components/pages/ConfirmPage";
 import {Preloader} from "./components/common/Preloader";
 import {useUpdate} from "./utils/hook/hooks";
-import {selector} from "./store/auth";
+import {selector, setUpdated} from "./store/auth";
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 import {MaterialsPage} from "./components/pages/MaterialsPage";
 import {EmployeesPage} from "./components/pages/EmployeesPage";
@@ -32,7 +32,7 @@ const TempMain = () => <div>Dima is chort</div>;
 const Temp404 = () => <div>404 NOT FOUND</div>
 export const App = () => {
     const initialized = useSelector(initializedSelector)
-    const updated = useUpdate(selector)
+    const updated = useUpdate(selector, setUpdated)
     const dispatch = useDispatch()
     useEffect(
         () => {

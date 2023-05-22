@@ -15,7 +15,7 @@ export const MaterialsPage = memo(
     withRole(roles.Admin)(
         () => {
             const {items, totalCount} = useSelector(selector("materials"))
-            const updated = useUpdate(selector)
+            const updated = useUpdate(selector, setUpdated)
             const dispatch = useDispatch()
             const [filter, setFilter] = useState({})
             const [loading, setLoading] = useState(false)

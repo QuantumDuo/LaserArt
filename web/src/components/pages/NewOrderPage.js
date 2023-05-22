@@ -59,7 +59,7 @@ export const NewOrderPage = memo(
         () => {
             const dispatch = useDispatch()
 
-            const updated = useUpdate(selector);
+            const updated = useUpdate(selector, setUpdated);
             const errors = useErrors(selector, resetErrors);
             const [step, handleNext, handleBack] = useStepping();
 

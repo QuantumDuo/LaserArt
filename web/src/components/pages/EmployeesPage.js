@@ -16,7 +16,7 @@ export const EmployeesPage = memo(
     withRole(roles.Admin)(
         () => {
             const {items, totalCount} = useSelector(selector("employees"))
-            const updated = useUpdate(selector)
+            const updated = useUpdate(selector, setUpdated)
             const dispatch = useDispatch()
             const [filter, setFilter] = useState({})
             const [loading, setLoading] = useState(false)

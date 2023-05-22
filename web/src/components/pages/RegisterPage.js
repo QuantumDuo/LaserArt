@@ -4,7 +4,7 @@ import {Navigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {confirmPasswordValidation, emailValidation, passwordValidation, stringRequired} from "../../utils/validation";
 import * as yup from "yup";
-import {register, resetErrors, selector} from "../../store/auth"
+import {register, resetErrors, selector, setUpdated} from "../../store/auth"
 import {Button, Container, Stack, Typography} from "@mui/material";
 import {Errors} from "../common/Errors";
 import {CustomTextField} from "../common/inputs/CustomTextField";
@@ -15,7 +15,7 @@ export const RegisterPage = memo(
     () => {
         const errors = useErrors(selector, resetErrors)
         const role = useSelector(selector("role"))
-        const isRegistered = useUpdate(selector)
+        const isRegistered = useUpdate(selector, setUpdated)
         const dispatch = useDispatch()
 
         const initialValues = {
