@@ -4,7 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c236ea72-098d-4a64-8292-73ffb1ce62e1" name="Changes" comment="" />
+    <list default="true" id="c236ea72-098d-4a64-8292-73ffb1ce62e1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/web/src/components/pages/MachinesPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/.vs/LaserArt/FileContentIndex/1c1cf5a2-babb-4683-8f48-be3c7b0a0798.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/.vs/LaserArt/FileContentIndex/988beeb8-404a-404a-9db9-85afa9720ba1.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/.vs/LaserArt/FileContentIndex/bdb4478e-546f-4db1-bb4f-f4596fadc475.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/LaserArt/database.sqlite-shm" beforeDir="false" afterPath="$PROJECT_DIR$/server/LaserArt/database.sqlite-shm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/LaserArt/database.sqlite-wal" beforeDir="false" afterPath="$PROJECT_DIR$/server/LaserArt/database.sqlite-wal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/common/dialogs/ChangeNameDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/common/dialogs/ChangeNameDialog.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/common/dialogs/EmployeeRegisterDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/common/dialogs/EmployeeRegisterDialog.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/common/dialogs/MachineEditDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/common/dialogs/MachineEditDialog.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/common/listitems/MachineListItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/common/listitems/MachineListItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/pages/EmployeesPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/pages/EmployeesPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/store/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/store/machine.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/store/machine.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,21 +50,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Vitaliy/Documents/GitHub/LaserArt/web",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "yarn",
-    "settings.editor.selected.configurable": "settings.nodejs",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Vitaliy/Documents/GitHub/LaserArt/web&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.nodejs&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Vitaliy\Documents\GitHub\LaserArt\web\src\store" />
@@ -92,6 +108,7 @@
       <workItem from="1684669230038" duration="658000" />
       <workItem from="1684672715666" duration="18795000" />
       <workItem from="1684695309495" duration="676000" />
+      <workItem from="1684754438242" duration="76000" />
     </task>
     <servers />
   </component>

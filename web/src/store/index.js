@@ -5,6 +5,7 @@ import auth from './auth'
 import app from './app'
 import materials from "./materials";
 import employee from "./employee";
+import machine from "./machine";
 
 
 export default configureStore({
@@ -12,7 +13,8 @@ export default configureStore({
         app,
         auth,
         materials,
-        employee
+        employee,
+        machine
     }),
     middleware: [thunkMiddleware]
 });

@@ -2,6 +2,8 @@ import {Box, Card, Stack, Typography} from "@mui/material";
 import React, {memo} from "react";
 import {EditDialogButton} from "../dialogs/EditDialogButton";
 import {DeleteButton} from "../buttons/DeleteButton";
+import {MachineEditDialog} from "../dialogs/MachineEditDialog";
+import {deleteMachines, editMachines} from "../../../store/machine";
 
 
 export const MachineListItem = memo(
@@ -30,9 +32,10 @@ export const MachineListItem = memo(
                             {machine.employee.name}
                         </Typography>
                     </Box>
-                    <EditDialogButton EditDialog={ChangeNameDialog} editAction={rename}
+                    <EditDialogButton EditDialog={MachineEditDialog}
+                                      editAction={editMachines}
                                       machine={machine}/>
-                    <DeleteButton deleteAction={deleteMachine} id={machine.id}/>
+                    <DeleteButton deleteAction={deleteMachines} id={machine.id}/>
                 </Stack>
             </Card>
         )

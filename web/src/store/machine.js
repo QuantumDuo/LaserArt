@@ -1,13 +1,5 @@
-
-
-
-
-
-
-
-
-
 import {createSlice} from "@reduxjs/toolkit";
+import {PagedArray} from "../utils/pagedArray";
 import {
     commonDelete,
     commonGet,
@@ -17,10 +9,9 @@ import {
     commonReducers,
     getSelector
 } from "./common";
-import {PagedArray} from "../utils/pagedArray";
 
 const {actions, name, reducer} = createSlice({
-    name: 'machines',
+    name: 'machine',
     initialState: {
         ...commonInitialState,
         machines: new PagedArray(),
@@ -37,7 +28,7 @@ export default reducer
 
 export const selector = getSelector(name)
 export const {machinesSuccess, resetErrors, setErrors, setUpdated} = actions
-export const getMachines = (filter = null) => commonGet('Material', filter, materialsSuccess)
-export const editMaterials = material => commonPut('Material', material, setUpdated, setErrors)
-export const addMaterials = material => commonPost('Material', material, setUpdated, setErrors)
-export const deleteMaterials = id => commonDelete('Material', id, setUpdated, setErrors)
+export const getMachines = (filter = null) => commonGet('Machine', filter, machinesSuccess)
+export const editMachines = machine => commonPut('Machine', machine, setUpdated, setErrors)
+export const addMachines = machine => commonPost('Machine', machine, setUpdated, setErrors)
+export const deleteMachines = id => commonDelete('Machine', id, setUpdated, setErrors)

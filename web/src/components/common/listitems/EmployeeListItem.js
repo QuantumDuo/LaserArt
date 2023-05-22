@@ -1,16 +1,32 @@
 import {useTranslation} from "react-i18next";
-import React, {memo} from "react";
-import {Box, Card, Stack, Typography} from "@mui/material";
+import React, {memo, useCallback, useMemo} from "react";
+import {Box, Button, Card, Stack, Typography} from "@mui/material";
 import {EditDialogButton} from "../dialogs/EditDialogButton";
 import {DeleteButton} from "../buttons/DeleteButton";
 import {ChangeNameDialog} from "../dialogs/ChangeNameDialog";
 import {deleteEmployee, rename} from "../../../store/employee";
 
 import {RenameIconButton} from "../buttons/IconButtons";
+import {MachineEditDialog} from "../dialogs/MachineEditDialog";
+import {MachineListItem} from "./MachineListItem";
+import {addMachines} from "../../../store/machine";
 
 export const EmployeeListItem = memo(
     ({employee}) => {
 
+
+        const AddMachineButton = useCallback(
+            props =>
+                <Button {...props}>
+                    {"Add machine"}
+                </Button>,
+            []
+        )
+        const machine = useMemo(
+            () => employee.machine || {employeeId: employee.id},
+            [employee]
+        )
+        console.log(machine)
         return (
             <Card sx={{padding: 1}}>
                 <Stack direction="row" alignItems="center">
@@ -26,6 +42,14 @@ export const EmployeeListItem = memo(
                                       user={employee}/>
                     <DeleteButton deleteAction={deleteEmployee} id={employee.id}/>
                 </Stack>
+                {
+                    machine.id
+                        ? <MachineListItem machine={machine}/>
+                        : <EditDialogButton EditDialog={MachineEditDialog}
+                                            EditButton={AddMachineButton}
+                                            editAction={addMachines}
+                                            machine={machine}/>
+                }
             </Card>
         )
     }

@@ -14,6 +14,7 @@ import {selector} from "./store/auth";
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 import {MaterialsPage} from "./components/pages/MaterialsPage";
 import {EmployeesPage} from "./components/pages/EmployeesPage";
+import {MachinesPage} from "./components/pages/MachinesPage";
 
 const theme = createTheme({
     components: {
@@ -51,6 +52,7 @@ export const App = () => {
                         <Route path='/register' element={<RegisterPage/>}/>
                         <Route path='/materials' element={<MaterialsPage/>}/>
                         <Route path='/employees' element={<EmployeesPage/>}/>
+                        <Route path='/machines' element={<MachinesPage/>}/>
                         <Route path='*' element={<Temp404/>}/>
                     </Routes>
                 </Box>

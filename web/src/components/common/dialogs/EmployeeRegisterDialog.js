@@ -14,7 +14,7 @@ import {
 import * as yup from "yup";
 import {useDispatch} from "react-redux";
 
-export const EmployeeRegisterDialog = ({cateringId, open, onClose, onSubmit}) => {
+export const EmployeeRegisterDialog = ({open, onClose, onSubmit}) => {
     const errors = useErrors(selector, resetErrors)
     const dispatch = useDispatch()
     const initialValues = {
@@ -22,7 +22,6 @@ export const EmployeeRegisterDialog = ({cateringId, open, onClose, onSubmit}) =>
         email: "",
         password: "",
         confirmPassword: "",
-        cateringId
     }
     const validationSchema = yup.object({
         name: stringRequired,

@@ -1,6 +1,6 @@
 import {CustomTextField} from "../inputs/CustomTextField";
 import React, {memo} from "react";
-import {resetErrors, selector} from "../../../store/materials";
+import {resetErrors, selector} from "../../../store/machine";
 import {useFormik} from "formik";
 import {EditDialog} from "./EditDialog";
 import {numberValidation, stringRequired} from "../../../utils/validation";
