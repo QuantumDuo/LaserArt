@@ -9,5 +9,6 @@ namespace Services.Interfaces
         Task<PagedArrayModel<OrderModel>> GetAsync(ClaimsPrincipal principal, int page);
         decimal GetPrice(OrderModel model);
         Task<Result> AcceptAsync(int id);
+        Task<Result> DoAsync(int id);
     }
 }

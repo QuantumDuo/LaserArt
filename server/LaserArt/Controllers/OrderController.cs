@@ -4,7 +4,6 @@ using Mapster;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Services.Interfaces;
 using Services.Models;
 using Utils.Constants;
@@ -38,7 +37,7 @@ namespace API.Controllers
             var model = request.Adapt<OrderModel>();
             if (Path.GetExtension(request.File.FileName).ToLower() != ".svg")
                 return BadRequest(new string[] { "Invalid file. Should be SVG" });
-                model.Path = $"Images/{Guid.NewGuid()}.svg";
+            model.Path = $"Images/{Guid.NewGuid()}.svg";
             using (var stream = System.IO.File.Create(model.Path))
                 await request.File.CopyToAsync(stream);
             model.CustomerId = userManager.GetUserId(User)!;
@@ -72,6 +71,15 @@ namespace API.Controllers
         public async Task<ActionResult<decimal>> AcceptAsync(int id)
         {
             var result = await orderService.AcceptAsync(id);
+            return HandleResult(result);
+        }
+
+        [HttpPatch(Routes.Action)]
+        [Authorize(Roles = Roles.Employee)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<decimal>> DoAsync(int id)
+        {
+            var result = await orderService.DoAsync(id);
             return HandleResult(result);
         }
 
