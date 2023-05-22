@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Scripting.Hosting;
 using Services.Interfaces;
 using Services.Models;
+using System;
 using System.Linq.Expressions;
 using System.Security.Claims;
 using Utils.Constants;
@@ -37,6 +38,9 @@ namespace Services
             };
             return await GetAsync(page, predicate, x => x.Time, true);
         }
+
+        public async Task<PagedArrayModel<OrderModel>> GetUnacceptedAsync(int page) =>
+            await GetAsync(page, x => x.Status == "Unaccepted", x => x.Time, true);
 
         public decimal GetPrice(OrderModel model)
         {
