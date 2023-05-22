@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c236ea72-098d-4a64-8292-73ffb1ce62e1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/web/src/components/pages/MachinesPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/.vs/LaserArt/FileContentIndex/1c1cf5a2-babb-4683-8f48-be3c7b0a0798.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/.vs/LaserArt/FileContentIndex/988beeb8-404a-404a-9db9-85afa9720ba1.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/.vs/LaserArt/FileContentIndex/bdb4478e-546f-4db1-bb4f-f4596fadc475.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/LaserArt/database.sqlite-shm" beforeDir="false" afterPath="$PROJECT_DIR$/server/LaserArt/database.sqlite-shm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/LaserArt/database.sqlite-wal" beforeDir="false" afterPath="$PROJECT_DIR$/server/LaserArt/database.sqlite-wal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/common/dialogs/ChangeNameDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/common/dialogs/ChangeNameDialog.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/common/dialogs/EmployeeRegisterDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/common/dialogs/EmployeeRegisterDialog.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/common/dialogs/MachineEditDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/common/dialogs/MachineEditDialog.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/common/listitems/MachineListItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/common/listitems/MachineListItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/pages/EmployeesPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/pages/EmployeesPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/store/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/store/machine.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/store/machine.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2Q6LkKuQVE7pANduq32QtxzJaeu" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Vitaliy/Documents/GitHub/LaserArt/web&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.nodejs&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Vitaliy\Documents\GitHub\LaserArt\web\src\store" />
+      <recent name="C:\Users\Vitaliy\Documents\GitHub\LaserArt\web\src\components\common\dialogs" />
+      <recent name="C:\Users\Vitaliy\Documents\GitHub\LaserArt\web\src\components\common\listitems" />
+      <recent name="C:\Users\Vitaliy\Documents\GitHub\LaserArt\web\src\components\pages\service" />
+      <recent name="C:\Users\Vitaliy\Documents\GitHub\LaserArt\web\src\utils" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Vitaliy\Documents\GitHub\LaserArt\web\src\components\common" />
+      <recent name="C:\Users\Vitaliy\Documents\GitHub\LaserArt\web\src\components" />
+      <recent name="C:\Users\Vitaliy\Documents\GitHub\LaserArt\web\src" />
+      <recent name="C:\Users\Vitaliy\Documents\GitHub\LaserArt\web\src\components\api" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/web/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c236ea72-098d-4a64-8292-73ffb1ce62e1" name="Changes" comment="" />
+      <created>1684669226205</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1684669226205</updated>
+      <workItem from="1684669230038" duration="658000" />
+      <workItem from="1684672715666" duration="18795000" />
+      <workItem from="1684695309495" duration="676000" />
+      <workItem from="1684754438242" duration="76000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

@@ -7,8 +7,9 @@
         public int Power { get; set; }
         public int Height { get; set; }
         public int Width { get; set; }
+        public int Speed { get; set; }
+
 
         public string? EmployeeId { get; set; }
-        public EmployeeModel? Employee { get; set; }
     }
 }

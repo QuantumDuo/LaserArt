@@ -17,7 +17,7 @@ services.AddDbContext<ApplicationContext>(options => options.UseSqlite(connectio
 Action<IdentityOptions> setupAction = options =>
 {
     options.Password.RequireNonAlphanumeric = false;
-    options.SignIn.RequireConfirmedEmail = true;
+    options.SignIn.RequireConfirmedEmail = false;
 };
 services.AddIdentity<User, IdentityRole>(setupAction)
         .AddEntityFrameworkStores<ApplicationContext>()
