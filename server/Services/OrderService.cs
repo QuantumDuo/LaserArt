@@ -50,6 +50,7 @@ namespace Services
             if (material is null)
                 return Result.Fail(Errors.NotFound);
             var price = decimal.Parse(configuration["Price"]!);
+            model.Status = "Unaccepted";
             model.Price = (material.Price + price) * model.Width * model.Height; ;
             var entity = model.Adapt<Order>();
             await context.AddAsync(entity);
@@ -64,6 +65,16 @@ namespace Services
             if (order is null)
                 return Result.Fail(Errors.NotFound);
             order.Status = "Accepted";
+            context.Update(order);
+            await context.SaveChangesAsync();
+            return Result.Ok();
+        }
+        public async Task<Result> DoAsync(int id)
+        {
+            var order = await context.Orders.FindAsync(id);
+            if (order is null)
+                return Result.Fail(Errors.NotFound);
+            order.Status = "Done";
             context.Update(order);
             await context.SaveChangesAsync();
             return Result.Ok();
