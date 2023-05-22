@@ -27,6 +27,7 @@ namespace DataAccess
             builder.Entity<Employee>()
                    .HasOne(e => e.Machine)
                    .WithOne(m => m.Employee)
+                   .HasForeignKey<Machine>(m => m.EmployeeId)
                    .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<Order>()
