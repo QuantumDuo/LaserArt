@@ -11,7 +11,7 @@ export const MaterialsListButton = memo(
                     {material.name}
                 </Typography>
                 <Typography>
-                    {`$${(material.price)}`}
+                    {`${(material.price)}`}<span>$/cm<sup>2</sup></span>
                 </Typography>
             </CardActionArea>
         </Card>

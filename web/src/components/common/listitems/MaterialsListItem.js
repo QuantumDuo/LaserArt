@@ -19,7 +19,7 @@ export const MaterialsListItem = memo(
                         {material.name}
                     </Typography>
                     <Typography>
-                        {`$${(material.price)}`}
+                        {`${(material.price)}`}<span> $/cm<sup>2</sup></span>
                     </Typography>
                 </Box>
                 <EditDialogButton EditDialog={MaterialEditDialog}

@@ -33,8 +33,8 @@ export const Step2 = memo(
                                               }
                                           }}/>
                 </LocalizationProvider>
-                <CustomTextField name="height" type="height" formik={formik} label={"Height"}/>
-                <CustomTextField name="width" type="width" formik={formik} label={"Width"}/>
+                <CustomTextField name="height" type="height" formik={formik} label={"Height"} InputProps={{endAdornment:'cm'}}/>
+                <CustomTextField name="width" type="width" formik={formik} label={"Width"} InputProps={{endAdornment:'cm'}}/>
                 <TextField label={"File"}
                            InputProps={{
                                readOnly: true,
