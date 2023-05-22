@@ -26,7 +26,6 @@ export const EmployeeListItem = memo(
             () => employee.machine || {employeeId: employee.id},
             [employee]
         )
-        console.log(machine)
         return (
             <Card sx={{padding: 1}}>
                 <Stack direction="row" alignItems="center">

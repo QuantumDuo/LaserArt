@@ -18,6 +18,7 @@ export const MachineEditDialog = memo(
             power: 0,
             height: 0,
             width: 0,
+            speed: 0,
             ...machine
         }
         const validationSchema = yup.object({
@@ -25,7 +26,8 @@ export const MachineEditDialog = memo(
             laserType: stringRequired,
             power: numberValidation,
             height: numberValidation,
-            width: numberValidation
+            width: numberValidation,
+            speed: numberValidation
         })
         const formik = useFormik({initialValues, validationSchema, onSubmit, enableReinitialize: true})
         const fields = [
@@ -34,6 +36,7 @@ export const MachineEditDialog = memo(
             <CustomTextField name="power" formik={formik} label="Power"/>,
             <CustomTextField name="height" formik={formik} label="Height"/>,
             <CustomTextField name="width" formik={formik} label="Width"/>,
+            <CustomTextField name="speed" formik={formik} label="Speed"/>,
         ]
         useReset(open, formik.resetForm);
         return <EditDialog title={title}

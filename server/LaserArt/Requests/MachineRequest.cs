@@ -7,6 +7,17 @@ namespace API.Requests
         [Required]
         public string Name { get; set; } = null!;
         [Required]
-        public decimal Price { get; set; }
+        public string LaserType { get; set; } = null!;
+        [Required]
+        public int Power { get; set; }
+        [Required]
+        public int Height { get; set; }
+        [Required]
+        public int Width { get; set; }
+        [Required]
+        public int Speed { get; set; }
+
+        [Required]
+        public string EmployeeId { get; set; } = null!;
     }
 }

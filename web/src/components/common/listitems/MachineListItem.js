@@ -8,7 +8,7 @@ import {deleteMachines, editMachines} from "../../../store/machine";
 
 export const MachineListItem = memo(
     ({machine}) => {
-
+console.log(machine)
         return (
             <Card sx={{padding: 1}}>
                 <Stack direction="row" alignItems="center">
@@ -29,7 +29,7 @@ export const MachineListItem = memo(
                             {machine.width}
                         </Typography>
                         <Typography>
-                            {machine.employee.name}
+                            {machine.speed}
                         </Typography>
                     </Box>
                     <EditDialogButton EditDialog={MachineEditDialog}
