@@ -17,6 +17,7 @@ import {EmployeesPage} from "./components/pages/EmployeesPage";
 import {MachinesPage} from "./components/pages/MachinesPage";
 import {OrdersPage} from "./components/pages/OrdersPage";
 import {NewOrderPage} from "./components/pages/NewOrderPage";
+import {UnacceptedOrdersPage} from "./components/pages/UnacceptedOrdersPage";
 
 const theme = createTheme({
     components: {
@@ -56,6 +57,7 @@ export const App = () => {
                         <Route path='/employees' element={<EmployeesPage/>}/>
                         <Route path='/machines' element={<MachinesPage/>}/>
                         <Route path='/orders' element={<OrdersPage/>}/>
+                        <Route path='/orders/unaccepted' element={<UnacceptedOrdersPage/>}/>
                         <Route path='/new_order' element={<NewOrderPage/>}/>
                         <Route path='*' element={<Temp404/>}/>
                     </Routes>
