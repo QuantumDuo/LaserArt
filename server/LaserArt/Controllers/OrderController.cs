@@ -63,7 +63,7 @@ namespace API.Controllers
         [HttpGet(Routes.Action)]
         [Authorize(Roles = Roles.Customer)]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public ActionResult<decimal> Price([FromForm] OrderRequest request)
+        public ActionResult<decimal> Price([FromForm] PriceRequest request)
         {
             var model = request.Adapt<OrderModel>();
             return orderService.GetPrice(model);

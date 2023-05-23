@@ -1,9 +1,11 @@
-import React, {memo, useCallback} from 'react';
+import React, {memo, useCallback, useEffect} from 'react';
 import {Button, Container, IconButton, Stack, TextField, Typography} from "@mui/material";
 import {CustomTextField} from "../common/inputs/CustomTextField";
 import {LocalizationProvider, MobileDateTimePicker} from "@mui/x-date-pickers";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import AttachFileIcon from '@mui/icons-material/AttachFile';
+import {useDispatch, useSelector} from "react-redux";
+import {getPrice, selector} from "../../store/order";
 
 export const Step2 = memo(
     ({formik, backStep}) => {
@@ -15,12 +17,17 @@ export const Step2 = memo(
             event => formik.setFieldValue("file", event.currentTarget.files[0]),
             [formik]
         )
+        const price = useSelector(selector("price"))
+        const dispatch = useDispatch()
+        useEffect(
+            () => {
+                dispatch(getPrice(formik.values))
+            },
+            [formik.values]
+        )
 
         return <Container maxWidth="sm">
             <Stack spacing={4}>
-                <Typography variant="h3" align="center">
-                    {"Login"}
-                </Typography>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <MobileDateTimePicker disablePast
                                           label={"Choose date and time"}
@@ -33,8 +40,9 @@ export const Step2 = memo(
                                               }
                                           }}/>
                 </LocalizationProvider>
-                <CustomTextField name="height" type="height" formik={formik} label={"Height"} InputProps={{endAdornment:'cm'}}/>
-                <CustomTextField name="width" type="width" formik={formik} label={"Width"} InputProps={{endAdornment:'cm'}}/>
+                <CustomTextField name="height" type="number" formik={formik} label={"Height"} InputProps={{endAdornment:'cm'}}/>
+                <CustomTextField name="width" type="number" formik={formik} label={"Width"} InputProps={{endAdornment:'cm'}}/>
+                <TextField InputProps={{readOnly: true}} label={"Price"} value={price}/>
                 <TextField label={"File"}
                            InputProps={{
                                readOnly: true,

@@ -15,6 +15,7 @@ export const Step1 = memo(
             material =>
                 () => {
                     formik.setFieldValue("materialId", material.id)
+                    formik.setFieldValue("materialPrice", material.price)
                     nextStep();
                 },
             [nextStep, formik]
