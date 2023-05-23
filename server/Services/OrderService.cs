@@ -42,9 +42,12 @@ namespace Services
         public async Task<PagedArrayModel<OrderModel>> GetUnacceptedAsync(int page) =>
             await GetAsync(page, x => x.Status == "Unaccepted", x => x.Time, true);
 
-        public decimal GetPrice(OrderModel model)
+        public async Task<Result<decimal>> GetPriceAsync(OrderModel model)
         {
             var price = decimal.Parse(configuration["Price"]!);
+            var material = await materialService.GetByIdAsync(model.MaterialId);
+            if (material is null)
+                return Result.Fail(Errors.NotFound);
             return (model.Material.Price + price) * model.Width * model.Height;
         }
 
