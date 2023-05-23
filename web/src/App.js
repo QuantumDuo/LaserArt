@@ -3,7 +3,7 @@ import React, {useEffect} from "react";
 import {Header} from "./components/Header";
 import {useDispatch, useSelector} from "react-redux";
 import {Route, Routes} from 'react-router-dom'
-import {Box, CssBaseline, Stack} from "@mui/material";
+import {Box, CssBaseline, Stack, Typography} from "@mui/material";
 import {LoginPage} from "./components/pages/LoginPage";
 import {initialize, initializedSelector, setInitialized} from "./store/app";
 import {RegisterPage} from "./components/pages/RegisterPage";
@@ -18,6 +18,7 @@ import {MachinesPage} from "./components/pages/MachinesPage";
 import {OrdersPage} from "./components/pages/OrdersPage";
 import {NewOrderPage} from "./components/pages/NewOrderPage";
 import {UnacceptedOrdersPage} from "./components/pages/UnacceptedOrdersPage";
+import mainimg from "./img/laser.png"
 
 const theme = createTheme({
     components: {
@@ -28,7 +29,17 @@ const theme = createTheme({
         },
     },
 });
-const TempMain = () => <div>Dima is chort</div>;
+const TempMain = () => <Stack justifyContent="center" alignItems="center" sx={{height:"100%",width:"100%"}}>
+    <img src={mainimg} />
+    <h1>Your ad could be here!</h1>
+</Stack>;
+const Footer = () => <footer style={{textAlign: "center"}}>
+    <Box sx={{backgroundColor: 'primary.main'}} padding={2}>
+        <Typography color="white">
+            &copy; ООО My Defense. All rights not reserved! For all legal matters contact noone
+        </Typography>
+    </Box>
+</footer>;
 const Temp404 = () => <div>404 NOT FOUND</div>
 export const App = () => {
     const initialized = useSelector(initializedSelector)
@@ -44,10 +55,10 @@ export const App = () => {
     return !initialized
         ? <Preloader/>
         : <ThemeProvider theme={theme}>
-            <Stack spacing={5} sx={{height: "100%"}}>
+            <Stack spacing={5} sx={{minHeight: "100vh"}}>
                 <CssBaseline/>
                 <Header/>
-                <Box component="main" sx={{height: "100%"}}>
+                <Box component="main" sx={{height: "100%"}} flexGrow={1}>
                     <Routes>
                         <Route path='/' element={<TempMain/>} exact/>
                         <Route path='/confirm' element={<ConfirmPage/>}/>
@@ -62,6 +73,7 @@ export const App = () => {
                         <Route path='*' element={<Temp404/>}/>
                     </Routes>
                 </Box>
+                <Footer/>
             </Stack>
         </ThemeProvider>
 }

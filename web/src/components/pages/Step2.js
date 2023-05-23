@@ -5,7 +5,7 @@ import {LocalizationProvider, MobileDateTimePicker} from "@mui/x-date-pickers";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import {useDispatch, useSelector} from "react-redux";
-import {getPrice, selector} from "../../store/order";
+import {getPrice, priceSuccess, selector} from "../../store/order";
 
 export const Step2 = memo(
     ({formik, backStep}) => {
@@ -25,6 +25,12 @@ export const Step2 = memo(
             },
             [formik.values]
         )
+        useEffect(
+            () => () => {
+                dispatch(priceSuccess(null))
+            },
+            []
+        )
 
         return <Container maxWidth="sm">
             <Stack spacing={4}>
@@ -42,7 +48,9 @@ export const Step2 = memo(
                 </LocalizationProvider>
                 <CustomTextField name="height" type="number" formik={formik} label={"Height"} InputProps={{endAdornment:'cm'}}/>
                 <CustomTextField name="width" type="number" formik={formik} label={"Width"} InputProps={{endAdornment:'cm'}}/>
-                <TextField InputProps={{readOnly: true}} label={"Price"} value={price}/>
+                <Typography variant='h6'>
+                    Price: ${price}
+                </Typography>
                 <TextField label={"File"}
                            InputProps={{
                                readOnly: true,

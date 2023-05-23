@@ -48,7 +48,7 @@ namespace Services
             var material = await materialService.GetByIdAsync(model.MaterialId);
             if (material is null)
                 return Result.Fail(Errors.NotFound);
-            return (model.Material.Price + price) * model.Width * model.Height;
+            return (material.Price + price) * model.Width * model.Height;
         }
 
         public override async Task<Result<OrderModel>> AddAsync(OrderModel model)

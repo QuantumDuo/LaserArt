@@ -63,7 +63,7 @@ namespace API.Controllers
         [HttpGet(Routes.Action)]
         [Authorize(Roles = Roles.Customer)]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<decimal>> PriceAsync([FromForm] PriceRequest request)
+        public async Task<ActionResult<decimal>> PriceAsync([FromQuery] PriceRequest request)
         {
             var model = request.Adapt<OrderModel>();
             var result = await orderService.GetPriceAsync(model);

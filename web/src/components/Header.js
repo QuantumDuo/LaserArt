@@ -7,6 +7,7 @@ import {selector, signOut} from "../store/auth";
 import {roles} from "../utils/constants";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import LoginIcon from "@mui/icons-material/Login";
+import logo from  "../img/laserart_logo.png"
 
 const AccountButtonComponent = memo(
     () => {
@@ -98,9 +99,7 @@ export const Header = memo(
                            spacing={3}
                            sx={{flexGrow: 1}}
                            component="nav">
-                        <Typography variant="h4" component="p" onClick={onLogoClick}>
-                            LaserArt
-                        </Typography>
+                        <img src={logo} alt="LaserArt" style={{width:"10%"}} onClick={onLogoClick}/>
                         {
                             role && role !== roles.Admin &&
                             <Button variant="inherit" color="success" onClick={onOrdersClick}>
