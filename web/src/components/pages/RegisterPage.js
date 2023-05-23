@@ -1,11 +1,10 @@
 import React, {memo, useCallback} from 'react';
 import {useFormik} from 'formik';
-import {useTranslation} from "react-i18next";
 import {Navigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {confirmPasswordValidation, emailValidation, passwordValidation, stringRequired} from "../../utils/validation";
 import * as yup from "yup";
-import {register, resetErrors, selector} from "../../store/auth"
+import {register, resetErrors, selector, setUpdated} from "../../store/auth"
 import {Button, Container, Stack, Typography} from "@mui/material";
 import {Errors} from "../common/Errors";
 import {CustomTextField} from "../common/inputs/CustomTextField";
@@ -16,8 +15,7 @@ export const RegisterPage = memo(
     () => {
         const errors = useErrors(selector, resetErrors)
         const role = useSelector(selector("role"))
-        const isRegistered = useUpdate(selector)
-        const {t} = useTranslation();
+        const isRegistered = useUpdate(selector, setUpdated)
         const dispatch = useDispatch()
 
         const initialValues = {
@@ -27,10 +25,10 @@ export const RegisterPage = memo(
             confirmPassword: ""
         }
         const validationSchema = yup.object({
-            name: stringRequired(t),
-            email: emailValidation(t),
-            password: passwordValidation(t),
-            confirmPassword: confirmPasswordValidation(t)
+            name: stringRequired,
+            email: emailValidation,
+            password: passwordValidation,
+            confirmPassword: confirmPasswordValidation
         });
         const onSubmit = useCallback(
             values => {
@@ -48,17 +46,17 @@ export const RegisterPage = memo(
                     <Container maxWidth="sm">
                         <Stack spacing={4}>
                             <Typography variant="h3" align="center">
-                                {t("Register")}
+                                {"Register"}
                             </Typography>
                             <Errors errors={errors}/>
-                            <CustomTextField name="name" formik={formik} label={t("Name")}/>
-                            <CustomTextField name="email" formik={formik} label={t("Email")}/>
-                            <CustomTextField name="password" type="password" formik={formik} label={t("Password")}/>
+                            <CustomTextField name="name" formik={formik} label={"Name"}/>
+                            <CustomTextField name="email" formik={formik} label={"Email"}/>
+                            <CustomTextField name="password" type="password" formik={formik} label={"Password"}/>
                             <CustomTextField name="confirmPassword" type="password" formik={formik}
-                                             label={t("Confirm password")}/>
+                                             label={"Confirm password"}/>
                             <Stack spacing={2}>
                                 <Button variant="contained" type="submit">
-                                    {t("Sign up")}
+                                    {"Sign up"}
                                 </Button>
                             </Stack>
                         </Stack>

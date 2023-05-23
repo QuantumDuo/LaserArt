@@ -1,5 +1,4 @@
 import React, {memo, useCallback, useState} from 'react'
-import {useTranslation} from 'react-i18next';
 import {AppBar, IconButton, MenuItem, Popover, Stack, Toolbar, Typography} from "@mui/material";
 import Button from "@mui/material/Button";
 import {useNavigate} from "react-router-dom";
@@ -65,38 +64,71 @@ const LoginButton = memo(
 
 export const Header = memo(
     () => {
-        const {t} = useTranslation()
         const navigate = useNavigate()
         const role = useSelector(selector("role"))
         const onLogoClick = useCallback(
             () => navigate("/"),
             [navigate]
         )
+
         const onMakeOrderClick = useCallback(
-            () => navigate("/my_orders/new"),
+            () => navigate("/new_order"),
+            [navigate]
+        )
+        const onOrdersClick = useCallback(
+            () => navigate("/orders"),
+            [navigate]
+        )
+        const onEmployeesClick = useCallback(
+            () => navigate("/employees"),
+            [navigate]
+        )
+        const onMaterialsClick = useCallback(
+            () => navigate("/materials"),
+            [navigate]
+        )
+        const onUnacceptedOrdersClick = useCallback(
+            () => navigate("/orders/unaccepted"),
             [navigate]
         )
         return (
             <AppBar component="header" position="sticky" sx={{display: "flex"}}>
                 <Toolbar>
-                    <Typography variant="h5" component="p" onClick={onLogoClick}>
-                        LaserArt
-                    </Typography>
-                    <Stack direction="row"
-                           ml={3}
+                    <Stack direction="row" alignItems="center"
                            spacing={3}
                            sx={{flexGrow: 1}}
                            component="nav">
+                        <Typography variant="h4" component="p" onClick={onLogoClick}>
+                            LaserArt
+                        </Typography>
                         {
-                            role !== roles.Admin &&
-                            <Button variant="contained" color="success" onClick={onMakeOrderClick}>
-                                {t("Make order")}
+                            role && role !== roles.Admin &&
+                            <Button variant="inherit" color="success" onClick={onOrdersClick}>
+                                {"My orders"}
                             </Button>
                         }
                         {
                             role === roles.Customer &&
                             <Button variant="contained" color="success" onClick={onMakeOrderClick}>
-                                {t("Make order")}
+                                {"Make order"}
+                            </Button>
+                        }
+                        {
+                            role === roles.Admin &&
+                            <Button variant="inherit" color="success" onClick={onEmployeesClick}>
+                                {"Employees"}
+                            </Button>
+                        }
+                        {
+                            role === roles.Admin &&
+                            <Button variant="inherit" color="success" onClick={onMaterialsClick}>
+                                {"Materials"}
+                            </Button>
+                        }
+                        {
+                            role === roles.Employee &&
+                            <Button variant="inherit" color="success" onClick={onUnacceptedOrdersClick}>
+                                {"Unaccepted orders"}
                             </Button>
                         }
                     </Stack>

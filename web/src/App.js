@@ -10,11 +10,14 @@ import {RegisterPage} from "./components/pages/RegisterPage";
 import {ConfirmPage} from "./components/pages/ConfirmPage";
 import {Preloader} from "./components/common/Preloader";
 import {useUpdate} from "./utils/hook/hooks";
-import {selector} from "./store/auth";
+import {selector, setUpdated} from "./store/auth";
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 import {MaterialsPage} from "./components/pages/MaterialsPage";
 import {EmployeesPage} from "./components/pages/EmployeesPage";
 import {MachinesPage} from "./components/pages/MachinesPage";
+import {OrdersPage} from "./components/pages/OrdersPage";
+import {NewOrderPage} from "./components/pages/NewOrderPage";
+import {UnacceptedOrdersPage} from "./components/pages/UnacceptedOrdersPage";
 
 const theme = createTheme({
     components: {
@@ -29,7 +32,7 @@ const TempMain = () => <div>Dima is chort</div>;
 const Temp404 = () => <div>404 NOT FOUND</div>
 export const App = () => {
     const initialized = useSelector(initializedSelector)
-    const updated = useUpdate(selector)
+    const updated = useUpdate(selector, setUpdated)
     const dispatch = useDispatch()
     useEffect(
         () => {
@@ -53,6 +56,9 @@ export const App = () => {
                         <Route path='/materials' element={<MaterialsPage/>}/>
                         <Route path='/employees' element={<EmployeesPage/>}/>
                         <Route path='/machines' element={<MachinesPage/>}/>
+                        <Route path='/orders' element={<OrdersPage/>}/>
+                        <Route path='/orders/unaccepted' element={<UnacceptedOrdersPage/>}/>
+                        <Route path='/new_order' element={<NewOrderPage/>}/>
                         <Route path='*' element={<Temp404/>}/>
                     </Routes>
                 </Box>

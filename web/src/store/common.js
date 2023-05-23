@@ -22,6 +22,7 @@ export const commonReducers = {
     },
 
     setUpdated: (state, {payload}) => {
+        console.log(payload)
         state.updated = payload
     }
 }

@@ -6,6 +6,7 @@ import {EditDialog} from "./EditDialog";
 import {numberValidation, stringRequired} from "../../../utils/validation";
 import * as yup from "yup";
 import {useErrors, useReset} from "../../../utils/hook/hooks";
+import {Typography} from "@mui/material";
 
 
 export const MaterialEditDialog = memo(
@@ -24,7 +25,7 @@ export const MaterialEditDialog = memo(
         const formik = useFormik({initialValues, validationSchema, onSubmit, enableReinitialize: true})
         const fields = [
             <CustomTextField name="name" formik={formik} label="Name"/>,
-            <CustomTextField name="price" formik={formik} label="Price"/>,
+            <CustomTextField name="price" formik={formik} label="Price" InputProps={{endAdornment:<span>$/cm<sup>2</sup></span>}}/>,
         ]
         useReset(open, formik.resetForm);
         return <EditDialog title={title}

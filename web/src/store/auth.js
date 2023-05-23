@@ -63,7 +63,10 @@ export const signIn = ({email, password}) => async dispatch => {
 export const signOut = () => async dispatch => {
     const response = await authAPI.logout()
     if (response.ok)
+    {
         dispatch(logoutSuccess())
+        dispatch(setUpdated(false))
+    }
 }
 
 export const confirmEmail = ({id, code}) => async dispatch => {

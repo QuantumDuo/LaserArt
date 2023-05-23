@@ -1,32 +1,32 @@
-import {withRole} from "../../utils/hoc/withAuth";
+import {withAuth, withRole} from "../../utils/hoc/withAuth";
 import {roles} from "../../utils/constants";
-import {addMaterials, getMaterials, selector, setUpdated} from "../../store/materials";
-import {MaterialEditDialog} from "../common/dialogs/MaterialEditDialog";
+import {getOrders, getUnaccepted, selector, setUpdated} from "../../store/order";
 import {useDispatch, useSelector} from "react-redux";
 import React, {memo, useCallback, useEffect, useState} from "react";
 import {SearchComponent} from "../common/inputs/SearchComponent";
 import {ListContainer} from "../common/ListContainer";
-import {AddFab} from "../common/buttons/AddFab";
-import {EditDialogButton} from "../common/dialogs/EditDialogButton";
 import {useUpdate} from "../../utils/hook/hooks";
-import {MaterialsListItem} from "../common/listitems/MaterialsListItem";
+import order from "../../store/order";
+import {OrderListItem} from "../common/listitems/OrderListItem";
+import {selector as authSelector} from "../../store/auth";
 
-export const MaterialsPage = memo(
-    withRole(roles.Admin)(
+export const UnacceptedOrdersPage = memo(
+    withRole(roles.Employee)(
         () => {
-            const {items, totalCount} = useSelector(selector("materials"))
+            const {items, totalCount} = useSelector(selector("order"))
+            const role = useSelector(authSelector("role"))
             const updated = useUpdate(selector, setUpdated)
             const dispatch = useDispatch()
             const [filter, setFilter] = useState({})
             const [loading, setLoading] = useState(false)
             const itemCallback = useCallback(
-                material => <MaterialsListItem key={material.id} material={material}/>,
+                order => <OrderListItem key={order.id} order={order}/>,
                 []
             )
             useEffect(
                 () => {
                     setLoading(true)
-                    dispatch(getMaterials(filter))
+                    dispatch(getUnaccepted(filter))
                     updated && dispatch(setUpdated(false))
                 },
                 [filter, updated]
@@ -45,9 +45,7 @@ export const MaterialsPage = memo(
                                loading={loading}
                                itemCallback={itemCallback}
                                totalCount={totalCount}
-                               emptyLabel={"No materials found"}/>
-                <EditDialogButton EditDialog={MaterialEditDialog} EditButton={AddFab} editAction={addMaterials}
-                                  material={{}}/>
+                               emptyLabel={"No orders found"}/>
             </>
         }
     )

@@ -6,6 +6,7 @@ import {EditDialog} from "./EditDialog";
 import {numberValidation, stringRequired} from "../../../utils/validation";
 import * as yup from "yup";
 import {useErrors, useReset} from "../../../utils/hook/hooks";
+import {CustomSelect} from "../inputs/CustomSelect";
 
 
 export const MachineEditDialog = memo(
@@ -32,11 +33,11 @@ export const MachineEditDialog = memo(
         const formik = useFormik({initialValues, validationSchema, onSubmit, enableReinitialize: true})
         const fields = [
             <CustomTextField name="name" formik={formik} label="Name"/>,
-            <CustomTextField name="laserType" formik={formik} label="Laser Type"/>,
-            <CustomTextField name="power" formik={formik} label="Power"/>,
-            <CustomTextField name="height" formik={formik} label="Height"/>,
-            <CustomTextField name="width" formik={formik} label="Width"/>,
-            <CustomTextField name="speed" formik={formik} label="Speed"/>,
+            <CustomSelect name="laserType" formik={formik} label="Laser Type" items={['Gas','Solid']}/>,
+            <CustomTextField name="power" formik={formik} label="Power" InputProps={{endAdornment:'W'}}/>,
+            <CustomTextField name="height" formik={formik} label="Height" InputProps={{endAdornment:'cm'}}/>,
+            <CustomTextField name="width" formik={formik} label="Width" InputProps={{endAdornment:'cm'}}/>,
+            <CustomTextField name="speed" formik={formik} label="Speed" InputProps={{endAdornment:'cm/s'}}/>,
         ]
         useReset(open, formik.resetForm);
         return <EditDialog title={title}
